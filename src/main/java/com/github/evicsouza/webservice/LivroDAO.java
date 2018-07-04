@@ -11,24 +11,24 @@ import java.util.ArrayList;
  *
  * @author Eva
  */
-public class LivrolDAO {
+public class LivroDAO {
     
-    private static LivrolDAO instance;
+    private static LivroDAO instance;
      static private ArrayList<Livro> livros;
      static int id;
      
-     private LivrolDAO(){
+     private LivroDAO(){
          id = 1;
          this.livros = new ArrayList<Livro>();
-         Livro a1 =  new Livro("cachorro", "bolinha");
+         Livro a1 =  new Livro("romance", "Segredos de Emma");
          salvar(a1);
-         Livro a2 =  new Livro("gato", "pelinho");
+         Livro a2 =  new Livro("infantil", "Cinderela");
          salvar(a2);
      }
     //só pode instanciar uma vez
-    public static LivrolDAO getInstance(){
+    public static LivroDAO getInstance(){
         if(instance == null){
-            instance = new LivrolDAO();
+            instance = new LivroDAO();
         }
         return instance;
     }
@@ -54,18 +54,28 @@ public class LivrolDAO {
         return a;
     }
     
-    public boolean atualizar(String id, Livro a){
-        for(int i=0; i<this.livros.size(); i++){
-            if(this.livros.get(i).id == a.id)
-                this.livros.set(i,a);
-                return true;
-        }
-        return false;
+    public Livro atualizar(Livro a){
+        int index = pegarIndex(a);
+        livros.set(index,a);
+        return listarPorId(a);
+        
+        
     }
     
-    public boolean remover(int id){
-        this.livros.remove(id);
+    public boolean remover(Livro a){
+        int index = pegarIndex(a);
+        this.livros.remove(index);
         return true;
+    }
+        public int pegarIndex(Livro a){
+    int index = -1;
+    for(int i=0;i<livros.size();i++){
+        if(livros.get(i).id == a.id){
+            index = i;
+        }
+    }
+    return index;
+    
     }
     
 }

@@ -12,21 +12,26 @@ package com.github.evicsouza.webservice;
 public class Livro {
     
     int id;
-    private String gereroDoLivro;
+    private String generoDoLivro;
     private String nome;
     
+    public Livro(int id, String generoDoLivro, String nome){
+        this.id = id;
+        this.generoDoLivro = generoDoLivro;
+        this.nome = nome;
+    }
     public Livro(String generoDoLivro, String nome){
-        this.gereroDoLivro = generoDoLivro;
+        this.generoDoLivro = generoDoLivro;
         this.nome = nome;
     }
     public Livro (int id){ //por cauda do listar pelo id
         this.id = id;
     }
-    public String getGereroDoLivro(){
-        return gereroDoLivro;
+    public String getGeneroDoLivro(){
+        return generoDoLivro;
     }
-    public void setGereroDoLivro(String gereroDoLivro){
-        this.gereroDoLivro = gereroDoLivro;
+    public void setGeneroDoLivro(String generoDoLivro){
+        this.generoDoLivro = generoDoLivro;
     }
     public String getLivro(){
         return nome;
